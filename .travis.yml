@@ -16,7 +16,7 @@ env:
     - ANDROID_API_LEVEL=26
     - EMULATOR_API_LEVEL=26
     - ANDROID_BUILD_TOOLS_VERSION=26.0.1
-    - ANDROID_ABI=google_apis/armeabi-v7a
+    - ANDROID_ABI=armeabi-v7a
     - ANDROID_TAG=google_apis
     - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
 
@@ -34,13 +34,13 @@ android:
     # Google Play Services
     #- extra-google-google_play_services
     # Support library
-    #- extra-android-support
+    - extra-android-support
     # Latest artifacts in local repository
     - extra-google-m2repository
     - extra-android-m2repository
     # Specify at least one system image
     #- sys-img-armeabi-v7a-google_apis-$ANDROID_API_LEVEL
-    - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
+    - sys-img-$ANDROID_ABI-google_apis-$ANDROID_EMU_API_LEVEL
 
   licenses:
     - 'android-sdk-preview-license-52d11cd2'
@@ -48,7 +48,7 @@ android:
 
 # Emulator Management: Create, Start and Wait
 before_script:
-- echo no | android create avd --force -n test -t android-26 --abi armeabi-v7a
+- echo no | android create avd --force -n test -t android-$ANDROID_EMU_API_LEVEL --abi google_apis/$ANDROID_ABI
 - emulator -avd test -no-audio -no-window &
 - android-wait-for-emulator
 - adb shell input keyevent 82 &
