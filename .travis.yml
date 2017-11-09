@@ -40,7 +40,7 @@ android:
     - extra-android-m2repository
     # Specify at least one system image
     #- sys-img-armeabi-v7a-google_apis-$ANDROID_API_LEVEL
-    - sys-img-$ANDROID_ABI-google_apis-$ANDROID_EMU_API_LEVEL
+    - sys-img-$ANDROID_ABI-google_apis-$EMULATOR_API_LEVEL
 
   licenses:
     - 'android-sdk-preview-license-52d11cd2'
